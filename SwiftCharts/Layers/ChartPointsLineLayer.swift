@@ -14,21 +14,23 @@ private struct ScreenLine {
     let lineWidth: CGFloat
     let animDuration: Float
     let animDelay: Float
+    let dashPattern: [Double]?
     
-    init(points: [CGPoint], color: UIColor, lineWidth: CGFloat, animDuration: Float, animDelay: Float) {
+    init(points: [CGPoint], color: UIColor, lineWidth: CGFloat, animDuration: Float, animDelay: Float, dashPattern: [Double]?) {
         self.points = points
         self.color = color
         self.lineWidth = lineWidth
         self.animDuration = animDuration
         self.animDelay = animDelay
+        self.dashPattern = dashPattern
     }
 }
 
-public class ChartPointsLineLayer<T: ChartPoint>: ChartPointsLayer<T> {
-    private let lineModels: [ChartLineModel<T>]
-    private var lineViews: [ChartLinesView] = []
-    private let pathGenerator: ChartLinesViewPathGenerator
-
+open class ChartPointsLineLayer<T: ChartPoint>: ChartPointsLayer<T> {
+    fileprivate let lineModels: [ChartLineModel<T>]
+    fileprivate var lineViews: [ChartLinesView] = []
+    fileprivate let pathGenerator: ChartLinesViewPathGenerator
+    
     public init(xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, innerFrame: CGRect, lineModels: [ChartLineModel<T>], pathGenerator: ChartLinesViewPathGenerator = StraightLinePathGenerator(), displayDelay: Float = 0) {
         
         self.lineModels = lineModels
@@ -39,17 +41,18 @@ public class ChartPointsLineLayer<T: ChartPoint>: ChartPointsLayer<T> {
         super.init(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: chartPoints, displayDelay: displayDelay)
     }
     
-    private func toScreenLine(lineModel lineModel: ChartLineModel<T>, chart: Chart) -> ScreenLine {
+    fileprivate func toScreenLine(lineModel: ChartLineModel<T>, chart: Chart) -> ScreenLine {
         return ScreenLine(
             points: lineModel.chartPoints.map{self.chartPointScreenLoc($0)},
             color: lineModel.lineColor,
             lineWidth: lineModel.lineWidth,
             animDuration: lineModel.animDuration,
-            animDelay: lineModel.animDelay
+            animDelay: lineModel.animDelay,
+            dashPattern: lineModel.dashPattern
         )
     }
     
-    override func display(chart chart: Chart) {
+    override func display(chart: Chart) {
         let screenLines = self.lineModels.map{self.toScreenLine(lineModel: $0, chart: chart)}
         
         for screenLine in screenLines {
@@ -59,10 +62,11 @@ public class ChartPointsLineLayer<T: ChartPoint>: ChartPointsLayer<T> {
                 lineColor: screenLine.color,
                 lineWidth: screenLine.lineWidth,
                 animDuration: screenLine.animDuration,
-                animDelay: screenLine.animDelay)
+                animDelay: screenLine.animDelay,
+                dashPattern: screenLine.dashPattern)
             
             self.lineViews.append(lineView)
-            lineView.userInteractionEnabled = false
+            lineView.isUserInteractionEnabled = false
             chart.addSubview(lineView)
         }
     }
