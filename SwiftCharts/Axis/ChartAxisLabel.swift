@@ -12,9 +12,10 @@ import UIKit
 open class ChartAxisLabel {
 
     open let text: String
-    let settings: ChartLabelSettings
 
-    var hidden: Bool = false
+    open let settings: ChartLabelSettings
+
+    open var hidden: Bool = false
 
     /// The size of the bounding rectangle for the axis label, taking into account the font and rotation it will be drawn with
     lazy var textSize: CGSize = {
@@ -22,7 +23,7 @@ open class ChartAxisLabel {
         if self.settings.rotation == 0 {
             return size
         } else {
-            return ChartUtils.boundingRectAfterRotatingRect(CGRect(x: 0, y: 0, width: size.width, height: size.height), radians: self.settings.rotation * CGFloat(M_PI) / 180.0).size
+            return ChartUtils.boundingRectAfterRotatingRect(CGRect(x: 0, y: 0, width: size.width, height: size.height), radians: self.settings.rotation * CGFloat.pi / 180.0).size
         }
     }()
     

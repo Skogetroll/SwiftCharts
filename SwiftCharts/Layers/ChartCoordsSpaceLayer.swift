@@ -10,8 +10,8 @@ import UIKit
 
 open class ChartCoordsSpaceLayer: ChartLayerBase {
     
-    let xAxis: ChartAxisLayer
-    let yAxis: ChartAxisLayer
+    open let xAxis: ChartAxisLayer
+    open let yAxis: ChartAxisLayer
     
     // frame where the layer displays chartpoints
     // note that this is not necessarily derived from axis, as axis can be in different positions (x-left/right, y-top/bottom) and be separated from content frame by a specified offset (multiaxis)

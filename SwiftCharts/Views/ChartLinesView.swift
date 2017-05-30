@@ -14,13 +14,13 @@ public protocol ChartLinesViewPathGenerator {
 
 open class ChartLinesView: UIView {
     
-    fileprivate let lineColor: UIColor
-    fileprivate let lineWidth: CGFloat
-    fileprivate let animDuration: Float
-    fileprivate let animDelay: Float
-    fileprivate let dashPattern: [Double]?
+    open let lineColor: UIColor
+    open let lineWidth: CGFloat
+    open let animDuration: Float
+    open let animDelay: Float
+    open let dashPattern: [Double]?
     
-    init(path: UIBezierPath, frame: CGRect, lineColor: UIColor, lineWidth: CGFloat, animDuration: Float, animDelay: Float, dashPattern: [Double]?) {
+    public init(path: UIBezierPath, frame: CGRect, lineColor: UIColor, lineWidth: CGFloat, animDuration: Float, animDelay: Float, dashPattern: [Double]?) {
         
         self.lineColor = lineColor
         self.lineWidth = lineWidth

@@ -12,22 +12,22 @@ import UIKit
 public struct ChartLineModel<T: ChartPoint> {
     
     /// The array of chart points that the line should be drawn with. In a simple case this would be drawn as straight line segments connecting each point.
-    let chartPoints: [T]
+    public let chartPoints: [T]
     
     /// The color that the line is drawn with
-    let lineColor: UIColor
+    public let lineColor: UIColor
     
     /// The width of the line in points
-    let lineWidth: CGFloat
+    public let lineWidth: CGFloat
     
     /// The duration in seconds of the animation that is run when the line appears
-    let animDuration: Float
+    public let animDuration: Float
     
     /// The delay in seconds before the animation runs
-    let animDelay: Float
+    public let animDelay: Float
     
     /// The dash pattern for the line
-    let dashPattern: [Double]?
+    public let dashPattern: [Double]?
     
     public init(chartPoints: [T], lineColor: UIColor, lineWidth: CGFloat = 1, animDuration: Float, animDelay: Float, dashPattern: [Double]? = nil) {
         self.chartPoints = chartPoints
@@ -39,7 +39,7 @@ public struct ChartLineModel<T: ChartPoint> {
     }
     
     /// The number of chart points in the model
-    var chartPointsCount: Int {
+    public var chartPointsCount: Int {
         return self.chartPoints.count
     }
     
