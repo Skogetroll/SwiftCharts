@@ -9,5 +9,4 @@ Pod::Spec.new do |s|
     s.source = { :git => "https://github.com/i-schuetz/SwiftCharts.git", :tag => '0.4' }
     s.source_files = 'SwiftCharts/*.swift', 'SwiftCharts/**/*.swift'
     s.frameworks = "Foundation", "UIKit", "CoreGraphics"
-    s.dependency "iOS-MagnifyingGlass"
 end
