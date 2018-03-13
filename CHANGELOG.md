@@ -4,6 +4,48 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.6] - 2017.04.23
+- Fix guidelines overlap with axis lines
+- Fix axis line minor irregularities (fixes #151)
+- Make ChartPointsLayer.display(Chart) open
+- Allow to retrieve frames of axis labels
+- Separate axis from layer with related UI elements (refactoring)
+- Implement dynamic axis values and labels generators (multiplier, fixed, non-overapping, nice numbers, suffix, date)
+- Zooming & panning
+- Allow to set line join/cap
+- Allow to set padding in points for axis values
+- Implement global tap handling
+- Allow to set fixed bar width for grouped bars
+- Improve info bubble
+- Implement axis tap handling
+- Add multiline support to tracker, modify gesture handling work well with zoom & pan
+- Implement tap handling for bars and stack frames
+- Implement animators
+- Implement catmull rom path generator
+- Add modes to views layer to add subviews to scale&translate subviews as part of own transform or only translate by updating their positions individually
+- Allow to generate custom views in bars(plain, grouped, stacked) and line layer
+- Implement elastic zoom/pan
+- Fix dashed path not showing when line is not animated
+- Implement grouped bars companion layer (to add e.g. labels to individual grouped bars).
+- Remove unnecessary use of self, improve formatting
+- Don't force unwrap context
+- Add custom transform mode to ChartPointsViewsLayer.
+- Allow to disable axis layer modification of chart's frame
+- Allow to show chart points outside of the chart's inner frame 
+- Add example for ranged axis and rotation handling
+- Adjust "Custom units" example to show how to set a fixed scrollable area / initial zoom.
+- Allow to use gradients in ChartPointsAreaLayer
+- Allow to use bars with rounded corners
+- Diverse other improvements and fixes
+
+## [0.5] - 2016.11.23
+- Add multi-chart tracker layer
+- Add dashed line support
+- Migrate to Swift 2.3
+- Migrate to Swift 3.0
+- Fix division by 0 in axis layer
+- Fix not being able to use reversed axis values
+
 ## [0.4] - 2016.05.29
 - Fix tracker showing NaN on constant coordinate
 - Pass tension values to cubic line to be able to modify curviness
